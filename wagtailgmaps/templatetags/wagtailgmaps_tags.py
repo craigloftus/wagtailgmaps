@@ -31,6 +31,8 @@ def map_editor(address, width, width_units, height, height_units, zoom):
     }
 
 
-@register.simple_tag
+@register.inclusion_tag('wagtailgmaps/admin_script_tag.html')
 def google_maps_script():
-    return '<script src="https://maps.googleapis.com/maps/api/js?key={}"></script>'.format(settings.WAGTAIL_ADDRESS_MAP_KEY)
+    return {
+        'key': settings.WAGTAIL_ADDRESS_MAP_KEY,
+    }
